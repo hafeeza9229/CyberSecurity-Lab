@@ -48,4 +48,4 @@ Following the standard laboratory tasks, a 15-minute system evaluation was condu
 *   **Search and Filter Command Logic:** While basic terminal syntax and I/O redirection are clear, the logical distinction and overlapping use cases between finding files on the system and utilizing `grep` to filter internal text patterns require further practice to master efficiently.
 
 ---
-*Next Objective: Escalating technical capabilities in Linux Fundamentals Part 2.*
+*Next Objective: Escalating technical capabilities in Linux Fundamentals.*
