@@ -33,7 +33,7 @@ The python script implements programmatic text parsing through the following ope
 ## Automation Script Execution Results
 
 Running the command `python3 log_parser.py` processed the log file cleanly:
-- **Output:** `Number of failed login attempts: 3`
+- **Output:** `Number of failed login attempts: 2`
 
 This basic programmatic filter accurately identified the targeted anomalies within the raw mock data structure, validating the code logic.
 
