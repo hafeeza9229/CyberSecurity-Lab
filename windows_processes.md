@@ -10,16 +10,19 @@
 ## Analyzed Windows Core Processes
 
 ### 1. Service Host (`svchost.exe`)
-*   **Architectural Function:** A standard system host process designed to execute multiple background dynamic-link library (.dll) services simultaneously.
-*   **Security Operational Context:** Rather than launching individual executable files for every independent background utility (such as audio streams, network connections, or automated updates), the operating system clusters these operations into multiple active instances of `svchost.exe`. Seeing dozens of these running concurrently is standard behavior; however, security analysts must monitor them closely since malware frequently attempts to masquerade under identical or slightly misspelled process names to evade detection.
+*   **What it does:** This is a helper process that acts like a container for smaller background jobs.
+*   **Why there are many copies:** Windows has dozens of little tasks to do (like running Wi-Fi, sync tools, or playing sounds). Instead of making a standalone program for each one, Windows groups them together inside multiple `svchost.exe` files to keep the computer running smoothly.
+*   **What I saw in Task Manager:** Multiple rows running under system accounts like `SYSTEM` or `LOCAL SERVICE`.
 
 ### 2. Windows Explorer (`explorer.exe`)
-*   **Architectural Function:** The primary user-mode interface executable responsible for rendering the visible desktop environment, the system taskbar, and file system navigation windows.
-*   **Security Operational Context:** This process manages the standard graphical workspace for the user. If this specific thread is manually terminated or crashes unexpectedly, the graphical interface will vanish immediately, leaving only a blank screen until the executable is relaunched via the task manager command line. 
+*   **What it does:** This process creates the actual visual desktop environment that I interact with.
+*   **Why it matters:** It is responsible for drawing my taskbar, the start menu, my desktop wallpaper, and any file folders I open. If this process crashes or stops, my entire screen goes black except for open apps.
+*   **What I saw in Task Manager:** It runs specifically under my personal Windows username because it belongs to my current user session.
 
 ### 3. Local Security Authority Subsystem Service (`lsass.exe`)
-*   **Architectural Function:** A critical component of the Windows security subsystem tasked with enforcing local authentication policies, verifying user credentials during login phases, and managing active security tokens.
-*   **Security Operational Context:** Because `lsass.exe` retains sensitive access tokens and credential data in active memory, it is a primary high-value target for threat actors aiming to extract credentials or escalate privileges. In a secure environment, there should strictly be only a single instance of this executable running, and it must originate exclusively from the protected `SYSTEM` account authority. Multiple instances or non-SYSTEM ownership indicate an immediate security compromise.
+*   **What it does:** This is the core security guard of the Windows operating system.
+*   **Why it matters for security:** It verifies my password when I log into my laptop and manages system permissions. Because it temporarily keeps login data in the computer's memory, hackers often target it to steal credentials.
+*   **What I saw in Task Manager:** There is only one single copy of it running, and its username is strictly listed as `SYSTEM`. If I ever see a second one, or if it runs under a normal user name, it is a sign of malware.
 
 ---
 *Next Objective: Review week one milestones and compile the comprehensive technical portfolio report.*
