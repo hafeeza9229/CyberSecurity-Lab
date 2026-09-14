@@ -17,7 +17,7 @@
 
 ### 2. Payload Inspection for Network Auditing
 *   **Filter Syntax:** `tcp contains "[string]"` (or `udp contains "[string]"`)
-*   **Operational Purpose:** This filter instructs Wireshark to scan the clear-text payload inside data packets for a specific text string. It is useful for security tracking, such as identifying if devices are communicating with unauthorized domains or checking for plain-text usernames traveling over unencrypted channels.
+*   **Operational Purpose:** This filter searches for the string in the content of any IP packet, regardless of the transport protocol. It is useful for security tracking, such as identifying if devices are communicating with unauthorized domains or checking for plain-text usernames traveling over unencrypted channels.
 
 ### 3. Application Response Performance Auditing
 *   **Filter Syntax:** `http.response.code == 200`
