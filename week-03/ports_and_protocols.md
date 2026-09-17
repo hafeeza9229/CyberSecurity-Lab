@@ -44,6 +44,7 @@ I tested port-based filters in Wireshark to observe network traffic and understa
 
 **Observation:**
 The filter was accepted by Wireshark, and the packet list showed traffic using TCP port 443. This allowed me to identify HTTPS connections by their port number rather than using a general protocol filter.
+![Wireshark HTTPS Capture Log](https_capture.png.png)
 
 ---
 
@@ -54,6 +55,7 @@ The filter was accepted by Wireshark, and the packet list showed traffic using T
 
 **Observation:**
 The packet list was empty. This showed that the DNS traffic generated during the test was not using TCP port 53. Normal DNS queries commonly use **UDP port 53**, which is why this TCP filter did not display the expected traffic.
+![Wireshark DNS over TCP Capture Log](dns_capture.png.png)
 
 ---
 
